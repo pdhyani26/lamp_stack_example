@@ -10,6 +10,7 @@ mysql -uroot -proot_password #to connect the DB provide 'root' is the username a
 
 ############Grant privileges to the Database created###################
 create database <db_name_you_want_to_create>;
+
 use <db_name_created>;
 
 CREATE TABLE Form_Registration (
