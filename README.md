@@ -1,6 +1,6 @@
 # lamp_stack_example
 
-This project containerizes Mysql, PHP and Apache using docker compose
+This project containerizes Mysql, PHP and Apache using docker compose using UBUNTU server
 
 Commands to create database,table in MySQL Container
 
@@ -24,6 +24,7 @@ subject VARCHAR(150)
 GRANT ALL PRIVILEGES ON * . * TO 'sys_admin'@'%';
 
 ############MOST IMPORTANT###################
+
 #update the dbname you created in src/welcome.php file
 
 $mysqli=new mysqli('practice-db',getenv("MYSQL_USER"),getenv("MYSQL_PASSWORD"),'<DB_NAME_YOU_HAVE_CREATED>');
