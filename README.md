@@ -9,6 +9,7 @@ docker exec -it <db-container-name> /bin/bash #to enter into existing MYSQL cona
 mysql -uroot -proot_password #to connect the DB provide 'root' is the username and 'root_password' is the password for DB
 
 ############Grant privileges to the Database created###################
+
 create database <db_name_you_want_to_create>;
 
 use <db_name_created>;
