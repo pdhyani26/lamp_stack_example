@@ -1,0 +1,43 @@
+--- 
+networks: 
+  practice-backend: 
+    driver: bridge
+    ipam: 
+      config: 
+        - 
+          subnet: 172.10.2.0/23
+      driver: default
+  practice-frontend: 
+    driver: bridge
+    ipam: 
+      config: 
+        - 
+          subnet: 172.10.1.0/24
+      driver: default
+services: 
+  practice-db: 
+    build: ./db
+    command: "--default-authentication-plugin=mysql_native_password"
+    env_file: 
+      - ./development.env
+    networks: 
+      practice-backend: 
+        ipv4_address: "172.10.3.2"
+    ports: 
+      - "3306:3306"
+  practice-www: 
+    build: ./www
+    depends_on: 
+      - practice-db
+    env_file: 
+      - ./development.env
+    networks: 
+      practice-backend: 
+        ipv4_address: "172.10.2.2"
+      practice-frontend: 
+        ipv4_address: "172.10.1.2"
+    ports: 
+      - "8080:80"
+    volumes: 
+      - "./src/:/var/www/html"
+version: "3"
